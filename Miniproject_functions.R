@@ -4,8 +4,8 @@ beta_val <- function(R_0, N, gamma) {
 }
 
 ##Function to dervive recovery rate from time of infection
-gamma_val <- function(tau) {
-  gamma <- 1/tau
+gamma_val <- function(nu) {
+  gamma <- 1/nu
 }
 
 ##Function to solve the SIR differential equation
@@ -18,14 +18,14 @@ sir_equations <- function(time, variables, parameters) {
   })
 }
 
-##Function to plot the SIR outcomes for a range of R0 and tau
+##Function to plot the SIR outcomes for a range of R0 and nu
 plot_graph <- function(plot_model){
   ggplot(plot_model, aes(x = time))+
     geom_line(aes(y = S), colour = "green")+
     geom_line(aes(y = I), colour = "red")+
     geom_line(aes(y = R), colour = "blue")+
     theme_minimal()+
-    labs(title = paste("R0 =",R_0, "Tau =", tau, "days"))+
+    labs(title = paste("R0 =",R_0, "nu =", nu, "days"))+
     xlab("Time in days")+
     ylab(paste("N=", N))+
     theme(plot.title = element_text(size = 12))
@@ -36,7 +36,7 @@ measles_outbreaks <- function(measles_cases){
   ggplot(measles_cases, aes(x = time))+
     geom_line(aes(y = I), colour = "red")+
     theme_minimal()+
-    labs(title = paste("Infectious population R0 =",R_0, "Tau =", tau, "days"))+
+    labs(title = paste("Infectious population R0 =",R_0, "nu =", nu, "days"))+
     xlab("Time in days")+
     ylab(paste("N=", N))+
     theme(plot.title = element_text(size = 12))
@@ -57,7 +57,7 @@ measles_sus <- function(measles_cases){
   ggplot(measles_cases, aes(x = time))+
     geom_line(aes(y = S), colour = "green")+
     theme_minimal()+
-    labs(title = paste("Susceptible population R0 =",R_0, "Tau =", tau, "days"))+
+    labs(title = paste("Susceptible population R0 =",R_0, "nu =", nu, "days"))+
     xlab("Time in days")+
     ylab(paste("N=", N))+
     theme(plot.title = element_text(size = 12))
@@ -68,7 +68,7 @@ measles_rec <- function(measles_cases){
   ggplot(measles_cases, aes(x = time))+
     geom_line(aes(y = R), colour = "blue")+
     theme_minimal()+
-    labs(title = paste("Recovered population R0 =",R_0, "Tau =", tau, "days"))+
+    labs(title = paste("Recovered population R0 =",R_0, "nu =", nu, "days"))+
     xlab("Time in days")+
     ylab(paste("N=", N))+
     theme(plot.title = element_text(size = 12))

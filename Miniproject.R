@@ -9,9 +9,9 @@ library("socialmixr")
 R_0 <- 12 ##The number of infections caused by a single introduction of a case into a susceptible population
 N <- 10000 ##The population at the beginning of the model
 I <- 12  ##The number of introduced infections
-tau <- 9 ##The number of days an individual is infectious for
+nu <- 9 ##The number of days an individual is infectious for
 
-gamma = gamma_val(tau) ##The rate of recovery from infection per unit time is termed gamma
+gamma = gamma_val(nu) ##The rate of recovery from infection per unit time is termed gamma
 beta = beta_val(R_0, N, gamma) ##The effective infectious contact rate per unit time is termed beta
 
 par_1 <- c(
@@ -43,9 +43,9 @@ plot_1 <- plot_graph(SIR_1)
 R_0 <- 18 ##This is the upper limit from the published literature
 N <- 10000 ##No change
 I <- 12  ##No change
-tau <- 9 ##No change
+nu <- 9 ##No change
 
-gamma = gamma_val(tau) ##No change
+gamma = gamma_val(nu) ##No change
 beta = beta_val(R_0, N, gamma) ##This will change based on the value of R0
 
 par_2 <- c(
@@ -68,9 +68,9 @@ plot_2 <- plot_graph(SIR_2)
 R_0 <- 12 ##No change
 N <- 10000 ##No change
 I <- 12  ##No change
-tau <- 7 ##Lower limit of infectious period
+nu <- 7 ##Lower limit of infectious period
 
-gamma = gamma_val(tau) ##No change
+gamma = gamma_val(nu) ##No change
 beta = beta_val(R_0, N, gamma) ##This will change based on the value of R0
 
 par_3 <- c(
@@ -93,9 +93,9 @@ plot_3 <- plot_graph(SIR_3)
 R_0 <- 12 ##No change
 N <- 10000 ##No change
 I <- 12  ##No change
-tau <- 12  ##Increased to maximum infectious period
+nu <- 12  ##Increased to maximum infectious period
 
-gamma = gamma_val(tau) ##No change
+gamma = gamma_val(nu) ##No change
 beta = beta_val(R_0, N, gamma) ##This will change based on the value of R0
 
 par_4 <- c(
@@ -119,14 +119,14 @@ patchwork <- plot_1 + plot_2 + plot_3 + plot_4
 patchwork + plot_annotation(title = "Measles infectious dynamics for a range of parameter values",
                             caption = "Green = Susceptible, Red = Infectious, Blue = Recovered")
 
-##We will now use the initial model of an R0 of 12 and tau of 9 days for different starting conditions
+##We will now use the initial model of an R0 of 12 and nu of 9 days for different starting conditions
 R_0 <- 12 ##The number of infections caused by a single introduction of a case into a susceptible population
 N <- 10000 ##The population at the beginning of the model
 I <- 12  ##The number of introduced infections
 R <- 0 ##The number of previously immune individuals
-tau <- 9 ##The number of days an individual is infectious for
+nu <- 9 ##The number of days an individual is infectious for
 
-gamma = gamma_val(tau) ##The rate of recovery from infection per unit time is termed gamma
+gamma = gamma_val(nu) ##The rate of recovery from infection per unit time is termed gamma
 beta = beta_val(R_0, N, gamma) ##The effective infectious contact rate per unit time is termed beta
 
 par <- c(
@@ -151,7 +151,7 @@ SIR_1 <- as.data.frame(ode(y = init,
 
 plot_5 <- plot_graph(SIR_1)+
   labs(title = paste("S=", init[1], "I=", I, "R=", R),
-       caption = paste("R0 =",R_0, "Tau =", tau, "days"))
+       caption = paste("R0 =",R_0, "nu =", nu, "days"))
 
 ##Changing the starting conditions to a reduced number of initially infected individuals
 N <- 10000
@@ -173,7 +173,7 @@ SIR_5 <- as.data.frame(ode(y = init,
 
 plot_6 <- plot_graph(SIR_5)+
   labs(title = paste("S=", init[1], "I=", I, "R=", R),
-       caption = paste("R0 =",R_0, "Tau =", tau, "days"))
+       caption = paste("R0 =",R_0, "nu =", nu, "days"))
 
 ##Changing the starting conditions to an increased number of vaccinated individuals to current UK average (2 doses by 5) = 86.4
 N <- 10000
@@ -195,7 +195,7 @@ SIR_6 <- as.data.frame(ode(y = init,
 
 plot_7 <- plot_graph(SIR_6)+
   labs(title = paste("S=", init[1], "I=", I, "R=", R),
-       caption = paste("R0 =",R_0, "Tau =", tau, "days"))
+       caption = paste("R0 =",R_0, "nu =", nu, "days"))
 
 ##Changing the starting conditions to an increased number of vaccinated individuals to level required for herd immunity = 98%
 N <- 10000
@@ -217,7 +217,7 @@ SIR_7 <- as.data.frame(ode(y = init,
 
 plot_8 <- plot_graph(SIR_7)+
   labs(title = paste("S=", init[1], "I=", I, "R=", R),
-       caption = paste("R0 =",R_0, "Tau =", tau, "days"))
+       caption = paste("R0 =",R_0, "nu =", nu, "days"))
 
 patchwork_2 <- plot_5 + plot_6 + plot_7 + plot_8
 patchwork_2 + plot_annotation(title = "Measles infectious dynamics for a range of parameter values",
@@ -230,9 +230,9 @@ R_0 <- 12 ##The number of infections caused by a single introduction of a case i
 N <- 50380000 ##The population at the beginning of the model
 I <- 3000/7  ##The number of introduced infections, this is the level of the lowest number of weekly cases/days
 R <- ((50380000/100)*91.3)-I ##The number of resistant individuals in the population
-tau <- 7 ##The number of days an individual is infectious for
+nu <- 7 ##The number of days an individual is infectious for
 
-gamma = gamma_val(tau) ##The rate of recovery from infection per unit time is termed gamma
+gamma = gamma_val(nu) ##The rate of recovery from infection per unit time is termed gamma
 beta = beta_val(R_0, N, gamma) ##The effective infectious contact rate per unit time is termed beta
 
 par_5 <- c(

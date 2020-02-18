@@ -269,7 +269,7 @@ par_6 <- c(
   mu
 )
 
-##First model
+##First model to generate an oscillating epidemic based on 
 SIR_9 <- as.data.frame(ode(y = init,
                            times = time,
                            func = sir_birth_death,
